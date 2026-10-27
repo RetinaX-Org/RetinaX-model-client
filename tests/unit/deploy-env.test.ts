@@ -50,7 +50,7 @@ describe("preview target guard", () => {
     expect(() =>
       assertPreviewTargetsAreSafe({
         NEXT_PUBLIC_DEPLOY_ENV: "preview",
-        NEXT_PUBLIC_BACKEND_URL: "https://api.modeltrace.example/v1",
+        NEXT_PUBLIC_BACKEND_URL: "https://api.retinax-model.example/v1",
       }),
     ).toThrow(/must not point at production/);
   });

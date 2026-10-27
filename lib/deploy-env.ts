@@ -12,7 +12,7 @@ export type DeployEnv = "production" | "preview" | "development";
 type Env = Record<string, string | undefined>;
 
 /** Hosts a preview is never allowed to point at. */
-const PRODUCTION_HOSTS = ["mainnet", "horizon.stellar.org", "api.modeltrace"];
+const PRODUCTION_HOSTS = ["mainnet", "horizon.stellar.org", "api.retinax-model"];
 
 export function resolveDeployEnv(env: Env = process.env): DeployEnv {
   const explicit = env.NEXT_PUBLIC_DEPLOY_ENV?.trim().toLowerCase();

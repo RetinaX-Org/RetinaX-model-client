@@ -13,9 +13,9 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div className="container site-footer-inner">
-        <span>ModelTrace — verifiable AI inference accounting on Stellar.</span>
+        <span>RetinaX-model — verifiable AI inference accounting on Stellar.</span>
         <RepositoryLink
-          href="https://github.com/FinesseStudioLab/modeltrace-frontend"
+          href="https://github.com/RetinaX-Org/RetinaX-model-client"
           className="site-footer-link"
         >
           View source on GitHub

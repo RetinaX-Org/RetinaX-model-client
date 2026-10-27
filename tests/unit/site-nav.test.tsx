@@ -144,7 +144,7 @@ describe("SiteNav", () => {
   it("renders the brand logo and links home", () => {
     renderNav("/");
 
-    const brandLink = screen.getByText("ModelTrace").closest("a");
+    const brandLink = screen.getByText("RetinaX-model").closest("a");
     expect(brandLink).not.toBeNull();
     expect(brandLink).toHaveAttribute("href", "/");
   });

@@ -112,7 +112,7 @@ export function SiteNav() {
             className="nav-logo"
             unoptimized
           />
-          <span className="brand-text">ModelTrace</span>
+          <span className="brand-text">RetinaX-model</span>
         </Link>
 
         {/* Mobile toggle button — hidden on desktop via CSS. */}

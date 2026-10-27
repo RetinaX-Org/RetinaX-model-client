@@ -53,22 +53,22 @@ export default function ProductPage() {
       </section>
 
       <section className="section" style={{ paddingTop: "12px" }}>
-        <h2 style={{ marginBottom: "24px" }}>Who is ModelTrace for?</h2>
+        <h2 style={{ marginBottom: "24px" }}>Who is RetinaX-model for?</h2>
         <div className="grid">
           <div className="card">
             <h3>AI Providers & Gateways</h3>
             <p style={{ marginBottom: "16px" }}>
-              Stop fighting over spreadsheet discrepancies. ModelTrace allows you to register signed attestations of inference events directly on-chain. When usage is metered and settled via Soroban smart contracts, your invoices become cryptographically defensible.
+              Stop fighting over spreadsheet discrepancies. RetinaX-model allows you to register signed attestations of inference events directly on-chain. When usage is metered and settled via Soroban smart contracts, your invoices become cryptographically defensible.
             </p>
             <p style={{ fontSize: "0.9rem", color: "var(--muted)" }}>
-              <strong>Integration Cost:</strong> Minimal. You don&apos;t need to rewrite your routing layer; ModelTrace acts as an observability rail alongside your existing infrastructure.
+              <strong>Integration Cost:</strong> Minimal. You don&apos;t need to rewrite your routing layer; RetinaX-model acts as an observability rail alongside your existing infrastructure.
             </p>
           </div>
 
           <div className="card">
             <h3>Enterprise Buyers</h3>
             <p style={{ marginBottom: "16px" }}>
-              Procurement teams and regulators demand proof, not black-box API invoices. ModelTrace ensures that every billed token is tied to a specific model version, region, and policy adherence.
+              Procurement teams and regulators demand proof, not black-box API invoices. RetinaX-model ensures that every billed token is tied to a specific model version, region, and policy adherence.
             </p>
             <ul className="list" style={{ marginTop: "12px", fontSize: "0.9rem" }}>
               <li>Attestation Rail <LiveTag /></li>
@@ -101,7 +101,7 @@ export default function ProductPage() {
               <strong>Gateway sends:</strong> A standard REST POST request to <code>/api/v1/attest</code> containing the inference payload: <code>model</code> (e.g., <code>llama-3.1-70b</code>), <code>payer_id</code>, and <code>token_count</code>.
             </li>
             <li>
-              <strong>ModelTrace Backend:</strong> Validates the payload, cryptographically signs it with an operator key, and queues the transaction for the Soroban network.
+              <strong>RetinaX-model Backend:</strong> Validates the payload, cryptographically signs it with an operator key, and queues the transaction for the Soroban network.
             </li>
             <li>
               <strong>Gateway receives:</strong> A cryptographic receipt containing the Stellar <code>txHash</code>. This hash serves as the immutable proof of service, permanently linking the inference event to the pricing tier without adding latency to your user&apos;s request.
@@ -120,13 +120,13 @@ export default function ProductPage() {
             <div>
               <h4 style={{ margin: "0 0 4px" }}>The Scenario</h4>
               <p style={{ margin: 0, fontSize: "0.95rem" }}>
-                A provider invoices 10M tokens for a billing period, but the enterprise buyer&apos;s internal observability metrics only show 8M tokens. Without ModelTrace, this triggers a lengthy manual audit of log files and email threads.
+                A provider invoices 10M tokens for a billing period, but the enterprise buyer&apos;s internal observability metrics only show 8M tokens. Without RetinaX-model, this triggers a lengthy manual audit of log files and email threads.
               </p>
             </div>
             <div>
               <h4 style={{ margin: "0 0 4px" }}>The Resolution</h4>
               <p style={{ margin: 0, fontSize: "0.95rem" }}>
-                With ModelTrace, funds are held in a Soroban escrow contract with a predefined dispute window. The enterprise buyer queries the on-chain attestations for that billing period. The ledger proves exactly 10M tokens were authorized, signed, and attested by the gateway in real-time.
+                With RetinaX-model, funds are held in a Soroban escrow contract with a predefined dispute window. The enterprise buyer queries the on-chain attestations for that billing period. The ledger proves exactly 10M tokens were authorized, signed, and attested by the gateway in real-time.
               </p>
               <p style={{ margin: "8px 0 0", fontSize: "0.95rem" }}>
                 Because the evidence is cryptographically verified and immutable, the dispute is programmatically dismissed based on the on-chain data, and the Soroban escrow automatically releases the funds to the provider.

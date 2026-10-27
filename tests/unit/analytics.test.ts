@@ -25,10 +25,10 @@ describe("analyticsDomain / isAnalyticsEnabled", () => {
   });
 
   it("trims and returns the configured domain", () => {
-    expect(analyticsDomain({ NEXT_PUBLIC_PLAUSIBLE_DOMAIN: " modeltrace.example " })).toBe(
-      "modeltrace.example"
+    expect(analyticsDomain({ NEXT_PUBLIC_PLAUSIBLE_DOMAIN: " retinax-model.example " })).toBe(
+      "retinax-model.example"
     );
-    expect(isAnalyticsEnabled({ NEXT_PUBLIC_PLAUSIBLE_DOMAIN: "modeltrace.example" })).toBe(true);
+    expect(isAnalyticsEnabled({ NEXT_PUBLIC_PLAUSIBLE_DOMAIN: "retinax-model.example" })).toBe(true);
   });
 
   it("treats an empty string the same as unset", () => {

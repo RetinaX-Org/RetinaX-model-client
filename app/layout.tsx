@@ -26,16 +26,16 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ModelTrace",
-    template: "%s | " + "ModelTrace",
+    default: "RetinaX-model",
+    template: "%s | " + "RetinaX-model",
   },
   description: "Verifiable AI inference accounting on Stellar.",
-  applicationName: "ModelTrace",
+  applicationName: "RetinaX-model",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "ModelTrace",
+    title: "RetinaX-model",
     description: "Verifiable AI inference accounting on Stellar.",
     url: "/",
     type: "website",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "ModelTrace",
+    title: "RetinaX-model",
     description: "Verifiable AI inference accounting on Stellar.",
   },
   icons: {

@@ -6,7 +6,7 @@ import { DocsNext } from "../docs-next";
 export const metadata: Metadata = {
   title: "Key custody",
   description:
-    "Why modeltrace-api never signs value movement, what the signing provider modes mean, and how attestation keys rotate.",
+    "Why retinax-model-api never signs value movement, what the signing provider modes mean, and how attestation keys rotate.",
 };
 
 export default function SecurityPage() {
@@ -17,7 +17,7 @@ export default function SecurityPage() {
         <span className="tag">Key custody</span>
         <h1>Signing and key custody</h1>
         <p className="docs-lead">
-          <code>modeltrace-api</code> cannot move funds. Not by policy or by careful
+          <code>retinax-model-api</code> cannot move funds. Not by policy or by careful
           coding — it holds no key capable of authorising value movement. This page
           explains why that constraint exists and what it costs you as an
           integrator.

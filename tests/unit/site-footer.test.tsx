@@ -10,7 +10,7 @@ describe("<SiteFooter>", () => {
   it("links to the project's own repository", () => {
     render(<SiteFooter />);
     const link = screen.getByRole("link", { name: "View source on GitHub" });
-    expect(link).toHaveAttribute("href", "https://github.com/FinesseStudioLab/modeltrace-frontend");
+    expect(link).toHaveAttribute("href", "https://github.com/RetinaX-Org/RetinaX-model-client");
     expect(link).toHaveAttribute("target", "_blank");
   });
 });

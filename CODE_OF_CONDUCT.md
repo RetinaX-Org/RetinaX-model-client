@@ -2,7 +2,7 @@
 
 ## Our pledge
 
-We as maintainers and contributors pledge to make participation in ModelTrace a
+We as maintainers and contributors pledge to make participation in RetinaX-model a
 harassment-free experience for everyone, regardless of age, body size, visible or
 invisible disability, ethnicity, sex characteristics, gender identity and
 expression, level of experience, education, socio-economic status, nationality,

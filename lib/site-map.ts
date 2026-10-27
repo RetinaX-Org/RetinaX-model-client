@@ -106,7 +106,7 @@ export const siteMap: readonly SiteMapEntry[] = [
   {
     label: "Docs — API reference",
     href: "/docs/api",
-    purpose: "REST endpoints exposed by modeltrace-api",
+    purpose: "REST endpoints exposed by retinax-model-api",
     status: "Shipped",
     inNav: false,
   },

@@ -1,6 +1,6 @@
 # Security Policy
 
-ModelTrace handles attestation, metering, and settlement of AI inference. A
+RetinaX-model handles attestation, metering, and settlement of AI inference. A
 vulnerability here can mean forged audit evidence or misdirected funds, so we
 treat reports seriously and will credit reporters who follow this process.
 

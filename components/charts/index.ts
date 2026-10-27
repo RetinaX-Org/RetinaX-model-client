@@ -1,5 +1,5 @@
 /**
- * ModelTrace chart primitives.
+ * RetinaX-model chart primitives.
  *
  * Hand-rolled SVG rendered in Server Components. See the approach note in the
  * PR that introduced this directory: for the four forms the dashboard and

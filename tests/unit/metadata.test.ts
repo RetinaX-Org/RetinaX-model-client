@@ -6,17 +6,17 @@ describe("site metadata", () => {
   it("uses an explicit public site URL when configured", () => {
     expect(
       resolveSiteUrl({
-        NEXT_PUBLIC_SITE_URL: "https://modeltrace.example/",
+        NEXT_PUBLIC_SITE_URL: "https://retinax-model.example/",
       }),
-    ).toBe("https://modeltrace.example");
+    ).toBe("https://retinax-model.example");
   });
 
   it("falls back to Vercel's deployment URL for previews", () => {
     expect(
       resolveSiteUrl({
-        VERCEL_URL: "modeltrace-git-main-finesse.vercel.app",
+        VERCEL_URL: "retinax-model-git-main-finesse.vercel.app",
       }),
-    ).toBe("https://modeltrace-git-main-finesse.vercel.app");
+    ).toBe("https://retinax-model-git-main-finesse.vercel.app");
   });
 
   it("keeps localhost as the local-only fallback", () => {

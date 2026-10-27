@@ -1,6 +1,6 @@
-# Contributing to modeltrace-frontend
+# Contributing to retinax-model-frontend
 
-The Next.js app is where ModelTrace becomes legible: the public story for buyers
+The Next.js app is where RetinaX-model becomes legible: the public story for buyers
 and grant reviewers, and — as auth lands — the operator dashboards and audit
 exports.
 
@@ -24,7 +24,7 @@ All three must pass before you open a PR — CI runs exactly these.
 ## Review bar
 
 - **No secrets in the bundle.** Never put an RPC credential or signing key in a
-  `NEXT_PUBLIC_*` variable. Privileged calls go through `modeltrace-backend`.
+  `NEXT_PUBLIC_*` variable. Privileged calls go through `retinax-model-backend`.
 - **Server Components by default.** Reach for `"use client"` only when you need
   state, effects, or browser APIs, and say why in the PR.
 - **Accessible by default.** Semantic elements, labelled controls, visible focus,

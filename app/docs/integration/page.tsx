@@ -8,7 +8,7 @@ import { DocsNext } from "../docs-next";
 export const metadata: Metadata = {
   title: "Integration guide",
   description:
-    "Running the ModelTrace web app against a local API, the environment variables involved, and the quality gates CI enforces.",
+    "Running the RetinaX-model web app against a local API, the environment variables involved, and the quality gates CI enforces.",
 };
 
 export default function IntegrationPage() {
@@ -22,7 +22,7 @@ export default function IntegrationPage() {
         <p className="docs-lead">
           The web app runs standalone — it reads no environment variables today and
           calls no API. You only need the second process once you are working on
-          something that talks to <code>modeltrace-api</code>.
+          something that talks to <code>retinax-model-api</code>.
         </p>
 
         <h2>Web app only</h2>
@@ -35,7 +35,7 @@ npm run dev     # http://localhost:3000`}</code>
         <h2>Web app with the API</h2>
         <pre className="docs-code" tabIndex={0}>
           <code>{`# terminal A — API
-cd ../modeltrace-backend
+cd ../retinax-model-backend
 npm ci
 cp .env.example .env
 npm run dev     # http://localhost:8080
@@ -76,7 +76,7 @@ npm run dev     # http://localhost:3000`}</code>
               </tr>
               <tr>
                 <td><code>NEXT_PUBLIC_APP_URL</code></td>
-                <td><code>https://modeltrace.app</code></td>
+                <td><code>https://retinax-model.app</code></td>
                 <td>Canonical URL for OG tags and redirects</td>
               </tr>
               <tr>

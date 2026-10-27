@@ -1,5 +1,5 @@
 /**
- * The one categorical palette every ModelTrace chart draws from.
+ * The one categorical palette every RetinaX-model chart draws from.
  *
  * Three surfaces need charts — the operator dashboard, the status page, and
  * compliance exports. Each picking its own colours is how a product ends up

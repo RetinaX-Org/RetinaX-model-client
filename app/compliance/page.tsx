@@ -22,7 +22,7 @@ export default function CompliancePage() {
         <h2 style={{ marginBottom: "24px" }}>The Evidence Model</h2>
         <div className="card" style={{ marginBottom: "32px" }}>
           <p style={{ margin: 0 }}>
-            ModelTrace operates on a principle of detached cryptographic attestation. We <strong>do not</strong> store raw inference data, prompt contents, or model outputs on the ledger. 
+            RetinaX-model operates on a principle of detached cryptographic attestation. We <strong>do not</strong> store raw inference data, prompt contents, or model outputs on the ledger. 
             Instead, the protocol produces immutable, time-stamped <strong>cryptographic receipts</strong> (SHA-256 hashes) representing the exact payload transmitted by the AI gateway. 
             Every billed token is deterministically linked to a Stellar transaction hash, providing auditors with a tamper-evident paper trail that outlives vendor relationships.
           </p>
@@ -30,15 +30,15 @@ export default function CompliancePage() {
 
         <h2 style={{ marginBottom: "16px" }}>Sample Audit Export</h2>
         <p style={{ color: "var(--muted)", maxWidth: "70ch", marginBottom: "24px" }}>
-          What a compliance officer actually sees. Download a sample export below to review the schema and artifact format natively used by ModelTrace.
+          What a compliance officer actually sees. Download a sample export below to review the schema and artifact format natively used by RetinaX-model.
         </p>
         <div className="card" style={{ marginBottom: "32px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: "16px" }}>
           <div>
-            <h4 style={{ margin: "0 0 4px" }}>modeltrace-audit-sample.csv</h4>
+            <h4 style={{ margin: "0 0 4px" }}>retinax-model-audit-sample.csv</h4>
             <p style={{ margin: 0, fontSize: "0.9rem", color: "var(--muted)" }}>Contains timestamp, payer ID, model version, tokens, payload hash, and the txHash.</p>
           </div>
           <a
-            href="/modeltrace-audit-sample.csv"
+            href="/retinax-model-audit-sample.csv"
             download
             className="button"
             style={{
@@ -57,7 +57,7 @@ export default function CompliancePage() {
 
         <h2 style={{ marginBottom: "16px" }}>Independent Verification</h2>
         <p style={{ color: "var(--muted)", maxWidth: "70ch", marginBottom: "24px" }}>
-          How a third party verifies a row without having to trust ModelTrace or the gateway vendor.
+          How a third party verifies a row without having to trust RetinaX-model or the gateway vendor.
         </p>
         <div className="card" style={{ marginBottom: "32px", padding: "24px" }}>
           <ol className="list" style={{ margin: 0, display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -80,7 +80,7 @@ export default function CompliancePage() {
           <div className="card">
             <h3>Data Residency & GDPR</h3>
             <p style={{ marginBottom: "12px", fontSize: "0.95rem" }}>
-              Raw inference content (prompts, responses, PII) is <strong>never</strong> transmitted to or stored on the blockchain. ModelTrace only anchors one-way, irreversible cryptographic hashes.
+              Raw inference content (prompts, responses, PII) is <strong>never</strong> transmitted to or stored on the blockchain. RetinaX-model only anchors one-way, irreversible cryptographic hashes.
             </p>
             <p style={{ margin: 0, fontSize: "0.95rem" }}>
               Because the on-chain data consists strictly of anonymized identifiers and hashes, it falls outside the scope of GDPR&apos;s &quot;Right to be Forgotten.&quot; Your sensitive PII remains entirely within your secure gateway perimeter.

@@ -5,7 +5,7 @@ import { BrandLogo } from "../../components/brand-logo";
 describe("BrandLogo", () => {
   it("renders as decoration, not as content", () => {
     // The wordmark beside it already names the brand. If this logo were
-    // exposed too, every screen reader would announce ModelTrace twice.
+    // exposed too, every screen reader would announce RetinaX-model twice.
     const { container } = render(<BrandLogo />);
     const svg = container.querySelector("svg");
 

@@ -6,7 +6,7 @@ import { DocsNext } from "../docs-next";
 export const metadata: Metadata = {
   title: "API reference",
   description:
-    "REST endpoints exposed by modeltrace-api today, with request and response shapes.",
+    "REST endpoints exposed by retinax-model-api today, with request and response shapes.",
 };
 
 export default function ApiPage() {
@@ -17,7 +17,7 @@ export default function ApiPage() {
         <span className="tag">API reference</span>
         <h1>REST API</h1>
         <p className="docs-lead">
-          <code>modeltrace-api</code> is a Fastify service. Two endpoints are
+          <code>retinax-model-api</code> is a Fastify service. Two endpoints are
           implemented today; both are unauthenticated and neither touches the
           chain. They are documented here because they are what you can actually
           call while integrating.
@@ -60,7 +60,7 @@ export default function ApiPage() {
           <code>{`$ curl http://localhost:8080/api/v1/meta
 
 {
-  "name": "modeltrace-api",
+  "name": "retinax-model-api",
   "version": "0.1.0",
   "description": "REST facade for Soroban contracts and indexers (scaffold)."
 }`}</code>

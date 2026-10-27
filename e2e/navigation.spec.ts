@@ -36,7 +36,7 @@ test.describe("navigation", () => {
       // status check, so assert on real content.
       await expect(page.getByRole("banner").or(page.locator("header.nav"))).toBeVisible();
       await expect(page.getByRole("heading").first()).toBeVisible();
-      await expect(page).toHaveTitle(/ModelTrace/);
+      await expect(page).toHaveTitle(/RetinaX-model/);
     });
   }
 

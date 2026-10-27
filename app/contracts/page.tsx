@@ -14,7 +14,7 @@ export default function ContractsPage() {
       <span className="tag">Contracts</span>
       <h1>Soroban contracts</h1>
       <p style={{ color: "var(--muted)", maxWidth: 640, marginTop: 0 }}>
-        On-chain modules that power ModelTrace settlement, attestation, and
+        On-chain modules that power RetinaX-model settlement, attestation, and
         escrow. Production addresses and interaction flows ship with the
         Soroban milestone.
       </p>

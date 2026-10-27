@@ -8,11 +8,11 @@ export default function HomePage() {
       <section className="landing-hero">
         <div className="landing-orbs" aria-hidden />
         <div className="landing-hero-inner">
-          <BrandLogo className="landing-logo" aria-label="ModelTrace logo" />
+          <BrandLogo className="landing-logo" aria-label="RetinaX-model logo" />
           <span className="tag">Stellar · Soroban · AI governance</span>
           <h1 className="hero-headline">Prove every inference.</h1>
           <p className="landing-lead">
-            ModelTrace turns AI usage into <strong>attested facts on-chain</strong>:
+            RetinaX-model turns AI usage into <strong>attested facts on-chain</strong>:
             {" "}which model ran, under which policy, and what it costs{"\u2014"}so
             procurement, finance, and auditors share one neutral layer.
           </p>
@@ -30,7 +30,7 @@ export default function HomePage() {
 
       <section className="landing-pillars" aria-labelledby="pillars-heading">
         <h2 className="visually-hidden" id="pillars-heading">
-          What ModelTrace provides
+          What RetinaX-model provides
         </h2>
         <article className="landing-pillar">
           <div className="landing-pillar-icon" aria-hidden>◆</div>

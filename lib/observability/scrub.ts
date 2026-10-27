@@ -1,7 +1,7 @@
 /**
  * Payload scrubbing for the error tracker (issue #76).
  *
- * ModelTrace is privacy-forward: the error tracker must never become the leak.
+ * RetinaX-model is privacy-forward: the error tracker must never become the leak.
  * Before any error payload is sent it passes through {@link scrubErrorPayload},
  * which strips wallet addresses and request data wherever they appear —
  * message strings, stack frames, and nested context objects.

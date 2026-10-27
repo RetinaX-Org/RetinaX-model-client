@@ -1,12 +1,12 @@
-# ModelTrace — Web application (Next.js / WhoPays-grade README)
+# RetinaX-model — Web application (Next.js / WhoPays-grade README)
 
-The **ModelTrace** web app — your public story, operator previews, and (soon) the dashboards that make **verifiable AI billing** on Stellar legible to buyers, vendors, and auditors.
+The **RetinaX-model** web app — your public story, operator previews, and (soon) the dashboards that make **verifiable AI billing** on Stellar legible to buyers, vendors, and auditors.
 
 ---
 
 ## 🎯 What is this app?
 
-This is the **Next.js 15 (App Router)** frontend for ModelTrace. It is the place where **enterprises, inference providers, and contributors** understand the product: what gets attested on-chain, how metering and settlement work, and how to participate. The Soroban contracts hold the rules; this app is the **human interface**—marketing, education, roadmap, and future signed-in operator views. Wallet-heavy or secret-bearing flows should still delegate to [`../backend/`](../backend/README.md) when you go to production.
+This is the **Next.js 15 (App Router)** frontend for RetinaX-model. It is the place where **enterprises, inference providers, and contributors** understand the product: what gets attested on-chain, how metering and settlement work, and how to participate. The Soroban contracts hold the rules; this app is the **human interface**—marketing, education, roadmap, and future signed-in operator views. Wallet-heavy or secret-bearing flows should still delegate to [`../backend/`](../backend/README.md) when you go to production.
 
 ---
 
@@ -25,7 +25,7 @@ From the [root README](../../README.md):
 - Register **signed attestations** of inference events tied to policy and pricing tiers.
 - Support **metered settlement** with dispute windows and programmable payout logic on Soroban.
 - Provide **operator-grade** dashboards and exports suitable for procurement and compliance reviews.
-- Stay interoperable with existing inference gateways—ModelTrace is a **rail**, not a replacement model host.
+- Stay interoperable with existing inference gateways—RetinaX-model is a **rail**, not a replacement model host.
 
 ---
 
@@ -171,7 +171,7 @@ Never put private keys or RPC URLs here.
 | `NEXT_PUBLIC_STELLAR_NETWORK` | `testnet` / `public` | Which network label the UI shows. |
 | `NEXT_PUBLIC_APP_URL` | `https://…` | Canonical URL for OG tags / redirects. |
 | `NEXT_PUBLIC_BACKEND_URL` | `http://localhost:8080` | Browser-safe pointer to API when calling from client. |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `modeltrace.example` | Enables cookieless analytics (Plausible) and Web Vitals reporting. Unset = both are no-ops. |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `retinax-model.example` | Enables cookieless analytics (Plausible) and Web Vitals reporting. Unset = both are no-ops. |
 
 ---
 
@@ -267,6 +267,6 @@ Match repository license (Apache-2.0 common for OSS grants).
 
 ---
 
-**npm package:** `modeltrace-web` · **Slug:** `modeltrace` · **Stack:** Next.js App Router
+**npm package:** `retinax-model-web` · **Slug:** `retinax-model` · **Stack:** Next.js App Router
 
 **Ship it.** 🚀

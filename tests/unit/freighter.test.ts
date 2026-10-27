@@ -99,7 +99,7 @@ describe("connect intent persistence", () => {
     writeConnectIntent(true);
     writeConnectIntent(false);
     expect(readConnectIntent()).toBe(false);
-    expect(window.localStorage.getItem("modeltrace:wallet-connect-intent")).toBeNull();
+    expect(window.localStorage.getItem("retinax-model:wallet-connect-intent")).toBeNull();
   });
 
   it("degrades to false rather than throwing when localStorage is unavailable", () => {

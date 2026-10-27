@@ -1,13 +1,13 @@
 import { ImageResponse } from "next/og";
 
-const title = "ModelTrace";
+const title = "RetinaX-model";
 const tagline = "Verifiable AI inference accounting on Stellar.";
 const bg = "#0a1628";
 const bg2 = "#122a4a";
 const accent = "#59c2ff";
 const accent2 = "#7cf9c4";
 
-export const alt = "ModelTrace \u2014 Verifiable AI inference accounting on Stellar.";
+export const alt = "RetinaX-model \u2014 Verifiable AI inference accounting on Stellar.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

@@ -4,7 +4,7 @@
  * address-hash.tsx
  *
  * Shared primitives for displaying Stellar addresses and transaction/payload
- * hashes throughout ModelTrace.
+ * hashes throughout RetinaX-model.
  *
  * <Address> — 56-char Stellar base32 address
  * <Hash>    — transaction or payload hash (hex, typically 64 chars)

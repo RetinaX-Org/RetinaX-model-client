@@ -6,7 +6,7 @@ import { DocsNext } from "../docs-next";
 export const metadata: Metadata = {
   title: "Architecture",
   description:
-    "How the Soroban contracts, the modeltrace-api edge, and the Next.js web app divide responsibility.",
+    "How the Soroban contracts, the retinax-model-api edge, and the Next.js web app divide responsibility.",
 };
 
 export default function ArchitecturePage() {
@@ -39,12 +39,12 @@ export default function ArchitecturePage() {
                 <td>Attestation records, metered units, escrow and payout rules</td>
               </tr>
               <tr>
-                <td><code>modeltrace-api</code></td>
+                <td><code>retinax-model-api</code></td>
                 <td>Fastify 5, TypeScript (strict, ESM)</td>
                 <td>Vendor credentials, tenancy and quota policy, export jobs</td>
               </tr>
               <tr>
-                <td><code>modeltrace-web</code></td>
+                <td><code>retinax-model-web</code></td>
                 <td>Next.js 15 App Router, React 19</td>
                 <td>Nothing privileged — public narrative and, later, operator views</td>
               </tr>
@@ -58,7 +58,7 @@ export default function ArchitecturePage() {
           takes is deliberately asymmetric with the path that money takes:
         </p>
         <pre className="docs-code" tabIndex={0}>
-          <code>{`gateway ──POST usage──▶ modeltrace-api ──attestation──▶ audit-registry
+          <code>{`gateway ──POST usage──▶ retinax-model-api ──attestation──▶ audit-registry
                             │                          (signed by a scoped
                             │                           service key)
                             │

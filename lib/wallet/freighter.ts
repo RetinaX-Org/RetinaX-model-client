@@ -18,7 +18,7 @@ import freighterApi, { isBrowser } from "@stellar/freighter-api";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 
-/** The network label ModelTrace expects, sourced from NEXT_PUBLIC_STELLAR_NETWORK. */
+/** The network label RetinaX-model expects, sourced from NEXT_PUBLIC_STELLAR_NETWORK. */
 export type ExpectedNetwork = "testnet" | "public";
 
 export interface WalletInfo {
@@ -78,7 +78,7 @@ export function networkLabel(network: string): string {
 // extension's permission popup, and doing that without a fresh user gesture
 // is both bad UX and blocked by some browsers.
 
-const INTENT_KEY = "modeltrace:wallet-connect-intent";
+const INTENT_KEY = "retinax-model:wallet-connect-intent";
 
 export function readConnectIntent(): boolean {
   if (typeof window === "undefined") return false;

@@ -44,7 +44,7 @@ test.describe("accessibility", () => {
       // analyze time. Without this the document-title rule reports a spurious
       // violation under parallel load — settle the document first so a failure
       // here means a real one.
-      await expect(page).toHaveTitle(/ModelTrace/);
+      await expect(page).toHaveTitle(/RetinaX-model/);
 
       const results = await new AxeBuilder({ page })
         .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])

@@ -29,12 +29,12 @@ describe("<AnalyticsScript>", () => {
     // next/script with strategy="afterInteractive" loads the tag into
     // document.head via its own effect, not into the render() container, so
     // this asserts against the document rather than the returned container.
-    mocked.analyticsDomain.mockReturnValue("modeltrace.example");
+    mocked.analyticsDomain.mockReturnValue("retinax-model.example");
     render(<AnalyticsScript />);
 
     const script = await vi.waitUntil(() =>
       document.querySelector('script[src="https://plausible.io/js/script.js"]')
     );
-    expect(script).toHaveAttribute("data-domain", "modeltrace.example");
+    expect(script).toHaveAttribute("data-domain", "retinax-model.example");
   });
 });

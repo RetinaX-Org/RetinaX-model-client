@@ -7,7 +7,7 @@ import { docsSections } from "./nav";
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "Technical reference for ModelTrace: architecture, Soroban contracts, the REST API, integration, and signing key custody.",
+    "Technical reference for RetinaX-model: architecture, Soroban contracts, the REST API, integration, and signing key custody.",
 };
 
 export default function DocsPage() {
@@ -19,7 +19,7 @@ export default function DocsPage() {
         <span className="tag">Documentation</span>
         <h1>Technical reference</h1>
         <p className="docs-lead">
-          How ModelTrace is put together: which component holds which rules, what the
+          How RetinaX-model is put together: which component holds which rules, what the
           API exposes today, and the decisions behind the parts that move money.
         </p>
 
@@ -57,7 +57,7 @@ export default function DocsPage() {
 
         <h2>Where the rules live</h2>
         <p>
-          ModelTrace splits enforcement across three places, and the split is the
+          RetinaX-model splits enforcement across three places, and the split is the
           thing worth understanding before anything else:
         </p>
         <ul>
@@ -67,7 +67,7 @@ export default function DocsPage() {
             metered units accrue, when escrow releases.
           </li>
           <li>
-            <strong>modeltrace-api</strong> holds the things a contract cannot
+            <strong>retinax-model-api</strong> holds the things a contract cannot
             safely hold: vendor credentials, scheduling, bulk export generation,
             and the policy of who may invoke what.
           </li>

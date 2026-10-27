@@ -37,7 +37,7 @@ export const docsSections: DocsSection[] = [
     href: "/docs/api",
     title: "API reference",
     summary:
-      "REST endpoints exposed by modeltrace-api, with request and response shapes.",
+      "REST endpoints exposed by retinax-model-api, with request and response shapes.",
     status: "Implemented",
   },
   {

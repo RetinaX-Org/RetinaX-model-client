@@ -4,7 +4,7 @@
  * components/analytics/quickstart-start-beacon.tsx
  *
  * Fires trackQuickstartStart() once, on mount. The integration guide
- * (app/docs/integration/page.tsx) *is* ModelTrace's quickstart — run the web
+ * (app/docs/integration/page.tsx) *is* RetinaX-model's quickstart — run the web
  * app, optionally run it against the API, quality gates — so visiting that
  * page is what "starting" the quickstart means.
  */
