@@ -1,272 +1,307 @@
-# RetinaX-model — Web application (Next.js / WhoPays-grade README)
+# RetinaX Model Client - Web Interface for Verifiable AI Audit Trails on Stellar
 
-The **RetinaX-model** web app — your public story, operator previews, and (soon) the dashboards that make **verifiable AI billing** on Stellar legible to buyers, vendors, and auditors.
+[![Next.js](https://img.shields.io/badge/Next.js-15-black.svg)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-blue.svg)](https://www.typescriptlang.org/)
+[![Soroban](https://img.shields.io/badge/Built%20on-Stellar%20Soroban-blue.svg)](https://soroban.stellar.org/)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
+[![CI](https://github.com/RetinaX-Org/RetinaX-model-client/actions/workflows/ci.yml/badge.svg)](https://github.com/RetinaX-Org/RetinaX-model-client/actions)
 
----
+RetinaX Model Client is the Next.js 15 (App Router) frontend for the [RetinaX Model](https://github.com/RetinaX-Org/retinaX-model) protocol. It is the public story of the protocol, the documentation hub, and the home of the operator dashboards and audit exports for verifiable AI billing on Stellar. The Soroban contracts hold the rules; this app is the human interface to them. Built for enterprises, inference providers, auditors and contributors who need to understand and verify what gets attested on-chain.
 
-## 🎯 What is this app?
-
-This is the **Next.js 15 (App Router)** frontend for RetinaX-model. It is the place where **enterprises, inference providers, and contributors** understand the product: what gets attested on-chain, how metering and settlement work, and how to participate. The Soroban contracts hold the rules; this app is the **human interface**—marketing, education, roadmap, and future signed-in operator views. Wallet-heavy or secret-bearing flows should still delegate to [`../backend/`](../backend/README.md) when you go to production.
-
----
-
-## ❓ Problems the **whole protocol** tackles
-
-From the [root README](../../README.md):
-
-- AI procurement is scaling faster than **governance**; teams cannot consistently prove model version, region, or policy for a given output.
-- Enterprises and regulated buyers need **audit trails** that survive vendor churn and spreadsheet exports.
-- Usage-based billing for inference often lacks a **shared neutral layer**, increasing disputes between buyers and providers.
+The client never holds secrets. RPC URLs, signing keys and vendor tokens stay in [RetinaX Model Backend](https://github.com/RetinaX-Org/RetinaX-model-backend), and the browser only receives `NEXT_PUBLIC_*` configuration.
 
 ---
 
-## ✅ Goals this frontend supports
+## Table of Contents
 
-- Register **signed attestations** of inference events tied to policy and pricing tiers.
-- Support **metered settlement** with dispute windows and programmable payout logic on Soroban.
-- Provide **operator-grade** dashboards and exports suitable for procurement and compliance reviews.
-- Stay interoperable with existing inference gateways—RetinaX-model is a **rail**, not a replacement model host.
-
----
-
-## 💡 Why a dedicated **Next.js** frontend?
-
-- **Trust is narrative + proof**: Grant reviewers and CISOs start on the website, not in `contracts/`.
-- **Product education**: Personas for gateway teams, finance, and compliance need long-form pages (`/product`, `/compliance`).
-- **Delivery transparency**: The `ExpectedPages` table on `/` tracks which routes are real vs planned—same as [`docs/SITE_MAP.md`](../../docs/SITE_MAP.md).
-- **Operator UX (roadmap)**: Live usage views, export wizards, and integration guides surface here once auth lands.
-
----
-
-## ✨ Features & surfaces (shipping roadmap)
-
-- **🧭 Global shell** — `app/layout.tsx` with nav to product, contracts, operators, compliance, roadmap, contributors, docs.
-- **🗺️ Live site map** — `components/expected-pages.tsx` on the home page mirrors the route backlog for stakeholders.
-- **📣 Marketing & compliance story** — routes for pricing posture, audit exports narrative, and contributor onboarding (iterate content per sprint).
-- **🔗 Integration posture** — docs routes explain how gateways POST usage and how disputes settle—paired with backend implementation.
-- **🔐 Wallet-ready path** — scaffold assumes future Freighter/wallet connect for demos; **never** embed RPC secrets in `NEXT_PUBLIC_*`.
-- **📱 Responsive UI** — CSS variables in `globals.css` per protocol theme for demos on laptop + mobile.
+- [Project Overview](#project-overview)
+- [Setup Instructions](#setup-instructions)
+  - [Prerequisites](#prerequisites)
+  - [Quick Start](#quick-start)
+  - [Environment Variables](#environment-variables)
+  - [Running Tests](#running-tests)
+  - [Scripts](#scripts)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Project Structure](#project-structure)
+- [Routes](#routes)
+- [Integration Contract](#integration-contract)
+- [Deployment](#deployment)
+- [CI/CD Pipeline](#cicd-pipeline)
+- [Helpful Links](#helpful-links)
+- [Contribution Guidelines](#contribution-guidelines)
+- [License](#license)
+- [Support](#support)
 
 ---
 
-## 🏗️ Architecture
+## Project Overview
+
+AI procurement is scaling faster than governance. Teams cannot consistently prove model version, region or policy for a given output, and usage-based billing for inference lacks a shared neutral layer, which leads to disputes between buyers and providers. RetinaX Model records attestations, metering and settlement on Soroban. This client makes that record legible to the people who rely on it.
+
+### Key Benefits
+
+| Benefit | Description |
+|---------|-------------|
+| **Trust Is Narrative + Proof** | Reviewers and security teams start on the website, not in the contracts |
+| **Secrets Stay Server-Side** | RPC and signing secrets never ship in the browser bundle |
+| **Delivery Transparency** | The home page publishes which routes are shipped, scaffolded or planned |
+| **Accessible by Default** | Landmarks, skip links and axe checks run in the end-to-end suite |
+| **Performance Budgeted** | CI fails when shared JS chunks exceed the gzipped budget |
+
+### Target Users
+
+- Enterprises and procurement teams needing audit exports
+- Inference vendors and gateway operators
+- Independent auditors and compliance teams
+- Open-source contributors
+
+---
+
+## Setup Instructions
+
+### Prerequisites
+
+- **Node.js 20.x or 22.x** (LTS) - [Install Node.js](https://nodejs.org/)
+- **npm** - bundled with Node.js
+- **Git** - for version control
+
+### Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/RetinaX-Org/RetinaX-model-client.git
+cd RetinaX-model-client
+
+# Install dependencies
+npm ci
+
+# Start the dev server with hot reload
+npm run dev
+```
+
+Open **http://localhost:3000**. The static scaffold needs no secrets.
+
+To run against the API, start [RetinaX Model Backend](https://github.com/RetinaX-Org/RetinaX-model-backend) separately and set its `CORS_ORIGIN` to this app's origin (for example `http://localhost:3000`).
+
+### Environment Variables
+
+Use `.env.local` (gitignored). Only browser-safe `NEXT_PUBLIC_*` variables belong here. Never put private keys or RPC URLs in them.
+
+| Variable | Example | Purpose |
+|----------|---------|---------|
+| `NEXT_PUBLIC_STELLAR_NETWORK` | `testnet` / `public` | Network label shown in the UI |
+| `NEXT_PUBLIC_APP_URL` | `https://...` | Canonical URL for OG tags and redirects |
+| `NEXT_PUBLIC_BACKEND_URL` | `http://localhost:8080` | Browser-safe pointer to the API |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `retinax-model.example` | Enables cookieless analytics and Web Vitals reporting. Unset makes both no-ops |
+| `NEXT_PUBLIC_DEPLOY_ENV` | `preview` | Set by the preview workflow; pins the build to testnet and marks it noindex |
+
+### Running Tests
+
+```bash
+# Lint
+npm run lint
+
+# Unit and component tests (Vitest)
+npm test
+
+# End-to-end and accessibility tests (Playwright + axe)
+npm run test:e2e
+```
+
+Fix all ESLint and TypeScript errors before opening a pull request.
+
+### Scripts
+
+| Command | Purpose |
+|---------|---------|
+| `npm run dev` | Dev server with hot reload |
+| `npm run build` | Production build |
+| `npm start` | Serve the production build |
+| `npm run lint` | ESLint (`next/core-web-vitals`) |
+| `npm test` | Vitest unit and component tests |
+| `npm run test:watch` | Vitest in watch mode |
+| `npm run test:e2e` | Playwright end-to-end tests |
+| `npm run test:e2e:ui` | Playwright with the interactive UI |
+| `npm run size` | size-limit performance budget (run after `npm run build`) |
+
+---
+
+## Features
+
+- Global shell with primary navigation derived from a single site map
+- Product, contracts, compliance, roadmap and contributor pages
+- Documentation hub covering API, architecture, contracts, integration and security
+- Operator dashboard preview with usage, quota, settlement and attestation panels
+- Audit export sample (`public/retinax-model-audit-sample.csv`) linked from the compliance page
+- Optional Freighter wallet connection for demos, using test keys only
+- Cookieless Plausible analytics and Web Vitals reporting, off unless configured
+- Preview deployments pinned to testnet, marked noindex, and verified at build time
+- Accessibility landmarks, skip link and axe-checked routes
+
+---
+
+## Architecture
 
 | Layer | Choice |
-| ----- | ------ |
-| Framework | **Next.js 15** — App Router, React 19 |
-| Language | **TypeScript** (strict) |
-| Styling | **CSS variables** in `app/globals.css` — protocol-specific palette |
-| Components | `components/expected-pages.tsx` — **site map table** synced with [`docs/SITE_MAP.md`](../../docs/SITE_MAP.md) |
-| Data | Static/scaffold today → Server Components + [`../backend/`](../backend/README.md) for authenticated flows |
-| Blockchain UX | Wallet demos optional — **RPC/signing secrets stay off this bundle** |
+|-------|--------|
+| Framework | Next.js 15, App Router, React 19 |
+| Language | TypeScript (strict) |
+| Styling | CSS variables in `app/globals.css` |
+| Wallet | `@stellar/freighter-api` (demo flows only) |
+| Data | Static scaffold today; Server Components and the backend API for authenticated flows |
+| Unit tests | Vitest and Testing Library |
+| End-to-end tests | Playwright and axe-core |
+| Performance | size-limit budget on shared JS chunks |
 
 ---
 
-## 📁 Project structure
+## Project Structure
 
 ```
-apps/web/
-├── app/
-│   ├── layout.tsx       # Shell: metadata + nav links
-│   ├── page.tsx         # Landing + <ExpectedPages /> site map
-│   ├── globals.css      # Design tokens / theme
-│   └── …                # Feature routes (see route tables below)
-├── components/
-│   └── expected-pages.tsx
-├── next.config.ts
-├── package.json
-├── tsconfig.json
-└── README.md            # ← you are here
+RetinaX-model-client/
+│
+├── app/                        # App Router routes
+│   ├── layout.tsx              # Shell: metadata and navigation
+│   ├── page.tsx                # Landing page and delivery table
+│   ├── product/ contracts/ operators/ compliance/ roadmap/ contributors/
+│   ├── docs/                   # Documentation hub (api, architecture, contracts, integration, security)
+│   ├── explore/                # Explorer with server actions
+│   └── globals.css             # Design tokens and theme
+│
+├── components/                 # Shared UI (nav, footer, charts, forms, wallet, analytics)
+├── lib/                        # Site map, deploy-env guard, analytics, API client, rate limiting
+├── public/                     # Static assets and the audit export sample
+├── tests/unit/                 # Vitest unit and component tests
+├── e2e/                        # Playwright end-to-end and accessibility tests
+│
+├── .github/workflows/          # CI, preview deploy and preview cleanup
+├── .size-limit.json            # Performance budget
+├── next.config.ts              # Next.js configuration
+└── README.md                   # This file
 ```
 
 ---
 
-## 🗺️ Routes
+## Routes
 
-### Header navigation
-
-| Route | Label | Notes |
-| ----- | ----- | ----- |
-| `/product` | Product | Primary navigation |
-| `/contracts` | Contracts | Primary navigation |
-| `/operators` | Operators | Primary navigation |
-| `/compliance` | Compliance | Primary navigation |
-| `/roadmap` | Roadmap | Primary navigation |
-| `/contributors` | Contributors | Primary navigation |
-| `/docs` | Docs | Primary navigation |
-
-### Full backlog (canonical)
-
-Authoritative **purpose + status**: [`../../docs/SITE_MAP.md`](../../docs/SITE_MAP.md).
+`lib/site-map.ts` is the single source of truth for routes, purpose and delivery status. The header navigation, the delivery table on `/` and the end-to-end coverage all derive from it.
 
 | Route | Purpose | Status |
-| ----- | ------- | ------ |
-| `/` | Marketing hub + site map | Scaffold * |
+|-------|---------|--------|
+| `/` | Marketing hub and site map | Scaffold |
 | `/product` | Personas, pricing hooks, integration story | Planned |
 | `/contracts` | Soroban modules and interaction flows | Planned |
 | `/operators` | Dashboard preview for AI gateways | Planned |
 | `/compliance` | Audit exports and policy packs | Planned |
-| `/roadmap` | Milestones vs grants | Scaffold * |
-| `/contributors` | Good first issues and guild roles | Planned |
-| `/docs` | Technical reference hub | Scaffold * |
+| `/roadmap` | Milestones | Scaffold |
+| `/contributors` | Good first issues and roles | Planned |
+| `/docs` | Technical reference hub | Scaffold |
 
-The **Expected pages** section on **`/`** mirrors this table so visitors see delivery honesty without opening GitHub.
-
----
-
-## 🚀 Quick start
-
-### Prerequisites
-
-- **Node.js** 20.x or **22.x** (LTS)
-- npm (pnpm/yarn OK if your org standardizes)
-
-### Install & run (dev)
-
-```bash
-cd apps/web
-npm install
-npm run dev
-```
-
-Open **http://localhost:3000**
-
-### Run **with** the API (integration dev)
-
-```bash
-# Terminal A — backend
-cd ../backend && npm install && cp .env.example .env && npm run dev
-
-# Terminal B — web (this folder)
-cd ../web && npm run dev
-```
-
-Match [`../backend/README.md`](../backend/README.md) CORS origin ↔ Next origin.
+Statuses here may lag the code; check `lib/site-map.ts` for the current values.
 
 ---
 
-## 📜 Available scripts
+## Integration Contract
 
-| Command | Purpose |
-| ------- | ------- |
-| `npm run dev` | Dev server + hot reload |
-| `npm run build` | Production build |
-| `npm run start` | Serve production output |
-| `npm run lint` | ESLint (`next/core-web-vitals`) |
+- **REST**: call [RetinaX Model Backend](https://github.com/RetinaX-Org/RetinaX-model-backend) under `/api/v1/*` from Route Handlers or authenticated clients. Never ship server secrets in `NEXT_PUBLIC_*`.
+- **Soroban**: demonstrate wallet flows with test keys only. Production signing belongs in the backend or a secure wallet.
+- **Contracts**: rules live in [RetinaX Model](https://github.com/RetinaX-Org/retinaX-model). The UI reflects state through Horizon, indexers or the backend.
 
 ---
 
-## 🔐 Environment variables
+## Deployment
 
-### Baseline
+Any Next.js host works (Vercel, Netlify, Cloudflare Pages).
 
-Static scaffold needs **no secrets**. Use `.env.local` (gitignored) for optional public config.
+1. Build command: `npm run build`
+2. Output: Next.js default (`.next`)
+3. Configure `NEXT_PUBLIC_*` variables per environment
+4. Point `NEXT_PUBLIC_BACKEND_URL` at the deployed API
+5. Enable preview deployments for demo links
 
-### Planned **browser-safe** vars (`NEXT_PUBLIC_*` only)
+### Preview Deployments
 
-Never put private keys or RPC URLs here.
-
-| Variable | Example | Purpose |
-| -------- | ------- | ------- |
-| `NEXT_PUBLIC_STELLAR_NETWORK` | `testnet` / `public` | Which network label the UI shows. |
-| `NEXT_PUBLIC_APP_URL` | `https://…` | Canonical URL for OG tags / redirects. |
-| `NEXT_PUBLIC_BACKEND_URL` | `http://localhost:8080` | Browser-safe pointer to API when calling from client. |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | `retinax-model.example` | Enables cookieless analytics (Plausible) and Web Vitals reporting. Unset = both are no-ops. |
-
----
-
-## 🔗 Integration contract
-
-- **REST**: Call [`apps/backend`](../backend/README.md) under `/api/v1/*` from Route Handlers or authenticated clients—never ship server secrets to `NEXT_PUBLIC_*`.
-- **Soroban**: Demonstrate wallet flows with **test keys** only; production signing patterns belong in backend or secure wallets.
-- **Contracts**: Rules live in [`../../contracts/`](../../contracts/) — UI reflects state via Horizon/indexers/backend.
-
----
-
-## 🧪 Testing & quality gates
-
-```bash
-npm run lint
-npm run build
-npm test
-npm run size
-```
-
-Fix all ESLint + TypeScript errors before merging.
-
-### Performance budget
-
-`npm run size` ([size-limit](https://github.com/ai/size-limit)) checks the gzipped
-weight of every cross-route JS chunk (`.next/static/chunks/*.js`) against the
-budget in `.size-limit.json`, currently 300 KB. This is a coarser number than
-the per-page "First Load JS" `next build` prints — it sums every shared chunk
-rather than de-duplicating per page — so treat it as its own metric with its
-own budget, not a stand-in for Next's dashboard figure. CI runs it after
-`npm run build` on every PR and fails the build on a regression past budget.
-
----
-
-## 🚢 Deployment (e.g. Vercel / Netlify / Cloudflare Pages)
-
-1. Set **build command**: `npm run build`
-2. Set **output**: Next.js default (`.next`)
-3. Configure **`NEXT_PUBLIC_*`** env vars per environment
-4. Point **`NEXT_PUBLIC_BACKEND_URL`** at your deployed API
-5. Enable **preview deployments** for grant demo links
-
-### Preview deployments
-
-`.github/workflows/preview.yml` deploys a preview and comments the URL on every
-pull request. It needs four repository secrets:
+`.github/workflows/preview.yml` deploys a preview and comments the URL on every pull request. It needs four repository secrets:
 
 | Secret | Where to find it |
-| ------ | ---------------- |
-| `VERCEL_TOKEN` | Vercel account settings → Tokens |
+|--------|------------------|
+| `VERCEL_TOKEN` | Vercel account settings, Tokens |
 | `VERCEL_ORG_ID` | `.vercel/project.json` after `vercel link` |
 | `VERCEL_PROJECT_ID` | `.vercel/project.json` after `vercel link` |
-| `STAGING_BACKEND_URL` | Your staging API origin — previews are pinned to it |
+| `STAGING_BACKEND_URL` | Your staging API origin; previews are pinned to it |
 
-The workflow runs on `pull_request`, not `pull_request_target`, so a pull
-request from a fork cannot reach these secrets. Those runs skip the deploy and
-report a notice instead of failing.
+The workflow runs on `pull_request`, not `pull_request_target`, so a fork cannot reach these secrets. Fork runs skip the deploy and report a notice instead of failing.
 
-Previews build with `NEXT_PUBLIC_DEPLOY_ENV=preview`, which pins them to
-testnet, shows a preview badge, and serves `Disallow: /` plus an
-`X-Robots-Tag: noindex` header so they cannot compete with production in
-search. `lib/deploy-env.ts` re-checks those targets during the build and fails
-it if a preview is configured to reach production, rather than trusting the
-workflow to have set every variable correctly.
-
-Lighthouse runs against the deployed preview and posts its scores to the pull
-request. `.github/workflows/preview-cleanup.yml` removes a pull request's
-deployments when it is merged or closed, so previews do not accumulate.
+Previews build with `NEXT_PUBLIC_DEPLOY_ENV=preview`, which pins them to testnet, shows a preview badge, and serves `Disallow: /` plus an `X-Robots-Tag: noindex` header. `lib/deploy-env.ts` re-checks these targets during the build and fails it if a preview is configured to reach production.
 
 ---
 
-## 🤝 Contributing
+## CI/CD Pipeline
 
-See [`../../CONTRIBUTING.md`](../../CONTRIBUTING.md). UI changes should stay aligned with [`../../docs/SITE_MAP.md`](../../docs/SITE_MAP.md).
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| `ci.yml` | Push/PR | Lint, build, unit tests, e2e and the size budget |
+| `preview.yml` | Pull request | Deploy a preview, post the URL and Lighthouse scores |
+| `preview-cleanup.yml` | PR merged or closed | Remove that pull request's deployments |
 
----
+### Performance Budget
 
-## 📄 License
-
-Match repository license (Apache-2.0 common for OSS grants).
-
----
-
-## 📞 Support & docs
-
-| Resource | Link |
-| -------- | ---- |
-| Monorepo overview | [`../../README.md`](../../README.md) |
-| Backend API | [`../backend/README.md`](../backend/README.md) |
-| Site map | [`../../docs/SITE_MAP.md`](../../docs/SITE_MAP.md) |
-| Layout plan | [`../../docs/layout-plan.md`](../../docs/layout-plan.md) |
-| Milestones → issues | [`../../docs/milestones-issues.md`](../../docs/milestones-issues.md) |
+`npm run size` checks the gzipped weight of every cross-route JS chunk (`.next/static/chunks/*.js`) against `.size-limit.json`, currently 300 KB. It sums every shared chunk rather than de-duplicating per page, so it is a separate metric from the "First Load JS" figure `next build` prints. CI runs it after `npm run build` and fails on a regression.
 
 ---
 
-**npm package:** `retinax-model-web` · **Slug:** `retinax-model` · **Stack:** Next.js App Router
+## Helpful Links
 
-**Ship it.** 🚀
+### Repositories
+
+- [RetinaX Model](https://github.com/RetinaX-Org/retinaX-model) - on-chain audit protocol and contracts
+- [RetinaX Model Backend](https://github.com/RetinaX-Org/RetinaX-model-backend) - trusted API edge
+- [RetinaX](https://github.com/RetinaX-Org/RetinaX) - decentralized vision care records
+
+### Repository Resources
+
+- [Contributing Guide](CONTRIBUTING.md)
+- [Code of Conduct](CODE_OF_CONDUCT.md)
+- [Security Policy](SECURITY.md)
+
+### External Resources
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Stellar Developer Docs](https://developers.stellar.org/)
+- [Soroban Documentation](https://soroban.stellar.org/docs)
+
+---
+
+## Contribution Guidelines
+
+We welcome contributions. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
+
+1. **Fork** the repository and clone your fork
+2. **Create** a feature branch: `git checkout -b feature/issue-number-description`
+3. **Make** your changes and keep route changes in `lib/site-map.ts`
+4. **Test**: `npm run lint && npm test && npm run build && npm run size`
+5. **Commit** with a conventional message: `feat: description (closes #issue-number)`
+6. **Push** and open a pull request using the template
+
+CI must pass and at least one review is required before merging.
+
+---
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/RetinaX-Org/RetinaX-model-client/issues)
+- **Security**: see [SECURITY.md](SECURITY.md) for private reporting
+
+---
+
+<p align="center">
+  Built with ❤️ on Stellar
+</p>
